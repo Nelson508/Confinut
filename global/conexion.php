@@ -14,7 +14,8 @@ class DB{
         $this->db       = DB;
         $this->user     = USUARIO;
         $this->password = PASSWORD;
-        $this->charset  = 'utf8mb4';
+        //$this->charset  = 'utf8mb4';
+        $this->charset  = 'utf8';
     }
 
     //mysql -e "USE todolistdb; select*from todolist" --user=azure --password=6#vWHD_$ --port=49175 --bind-address=52.176.6.0
