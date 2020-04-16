@@ -9,7 +9,7 @@ if(isset($_POST["btnLogin"])){
 
     $conn= new DB;
 
-    $sentenciaSQL=$conn->connect()->prepare("SELECT * FROM cfnusuario 
+    $sentenciaSQL=$conn->connect()->query("SELECT * FROM cfnusuario 
                                               WHERE email=:email
                                               AND password=:password");
 
@@ -18,6 +18,7 @@ if(isset($_POST["btnLogin"])){
     $sentenciaSQL->execute();
 
     $registro=$sentenciaSQL->fetch(PDO::FETCH_ASSOC);
+    //$registro=$sentenciaSQL->
            
             
     $numerRegistros=$sentenciaSQL->rowCount();
@@ -26,7 +27,7 @@ if(isset($_POST["btnLogin"])){
         session_start();
         $_SESSION['usuario']=$registro;
         echo "Bienvenido...";
-       if($registro['tipo_usuario']='Administrador'){
+       if($registro['tipo_usuario']=='Administrador'){
         header('Location:Vistapanel.php');
 
        }else if($registro['tipo_usuario']=="Persona"){
