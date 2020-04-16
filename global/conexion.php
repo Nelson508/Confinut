@@ -7,7 +7,7 @@ class DB{
     private $db;
     private $user;
     private $password;
-    private $charset;
+    //private $charset;
 
     public function __construct(){
         $this->host     = SERVIDOR;
@@ -22,7 +22,7 @@ class DB{
     function connect(){
     
         try{
-            $connection = "pgsql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
+            $connection = "pgsql:host=".$this->host.";dbname=" . $this->db;
             //$connection = "mysql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
