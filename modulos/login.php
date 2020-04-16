@@ -10,11 +10,11 @@ if(isset($_POST["btnLogin"])){
     $conn= new DB;
 
     $sentenciaSQL=$conn->connect()->prepare("SELECT * FROM cfnusuario 
-                                              WHERE Email=:Email
-                                              AND Password=:Password");
+                                              WHERE email=:email
+                                              AND password=:password");
 
-    $sentenciaSQL->bindParam("Email",$txtEmail,PDO::PARAM_STR);
-    $sentenciaSQL->bindParam("Password",$txtPassword,PDO::PARAM_STR);
+    $sentenciaSQL->bindParam("email",$txtEmail,PDO::PARAM_STR);
+    $sentenciaSQL->bindParam("password",$txtPassword,PDO::PARAM_STR);
     $sentenciaSQL->execute();
 
     $registro=$sentenciaSQL->fetch(PDO::FETCH_ASSOC);
@@ -26,10 +26,10 @@ if(isset($_POST["btnLogin"])){
         session_start();
         $_SESSION['usuario']=$registro;
         echo "Bienvenido...";
-       if($registro['Tipo_Usuario']=='Administrador'){
+       if($registro['tipo_usuario']='Administrador'){
         header('Location:Vistapanel.php');
 
-       }else if($registro['Tipo_Usuario']=='Persona'){
+       }else if($registro['tipo_usuario']=="Persona"){
         header('Location:indexUsuario.php');
 
        }
