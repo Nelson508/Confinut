@@ -7,14 +7,14 @@ class DB{
     private $db;
     private $user;
     private $password;
-    //private $charset;
+    private $charset;
 
     public function __construct(){
         $this->host     = SERVIDOR;
         $this->db       = DB;
         $this->user     = USUARIO;
         $this->password = PASSWORD;
-        //$this->charset  = 'utf8mb4';
+        $this->charset  = 'utf8mb4';
     }
 
     //mysql -e "USE todolistdb; select*from todolist" --user=azure --password=6#vWHD_$ --port=49175 --bind-address=52.176.6.0
@@ -22,8 +22,8 @@ class DB{
     function connect(){
     
         try{
-            $connection = "pgsql:host=".$this->host.";dbname=" . $this->db;
-            //$connection = "mysql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
+            //$connection = "pgsql:host=".$this->host.";dbname=" . $this->db;
+            $connection = "mysql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,
